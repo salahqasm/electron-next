@@ -30,6 +30,7 @@ app.on("ready", async () => {
       });
 
   mainWindow.loadURL(url);
+  mainWindow.webContents.openDevTools();
 });
 
 // Quit the app once all windows are closed
@@ -39,4 +40,7 @@ app.on("window-all-closed", app.quit);
 ipcMain.on("message", (event: IpcMainEvent, message: any) => {
   console.log(message);
   setTimeout(() => event.sender.send("message", "hi from electron"), 500);
+});
+ipcMain.handle("ping", () => {
+  return "pong";
 });

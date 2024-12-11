@@ -2,7 +2,7 @@
   "private": true,
   "name": "electron-typescript-next",
   "version": "0.0.1",
-  "main": "dist-server/index.js",
+  "main": "dist-server/server/index.js",
   "productName": "ElectronTypescriptNext",
   "scripts": {
     "clean": "rimraf dist dist-server renderer/out renderer/.next",

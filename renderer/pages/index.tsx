@@ -20,6 +20,14 @@ const IndexPage = () => {
 
   return (
     <Layout title="Home | Next.js + TypeScript + Electron Example">
+      <button
+        onClick={async () => {
+          let res = await window.electron.ping();
+          console.log(res);
+        }}
+      >
+        ping
+      </button>
       <h1>Hello Next.js 👋</h1>
       <button onClick={onSayHiClick}>Say hi to electron</button>
     </Layout>

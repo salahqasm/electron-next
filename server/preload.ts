@@ -8,6 +8,9 @@ import { contextBridge, ipcRenderer } from "electron";
 // Be very cautious about which globals and APIs you expose to untrusted remote content.
 
 let electronAPI: TElectronAPI = {
+  ping: async () => {
+    return await ipcRenderer.invoke("ping");
+  },
   sayHello: () => ipcRenderer.send("message", "hi from next"),
   receiveHello: (handler) => ipcRenderer.on("message", handler),
   stopReceivingHello: (handler) =>

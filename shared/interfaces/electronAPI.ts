@@ -8,4 +8,5 @@ export type TElectronAPI = {
   stopReceivingHello: (
     handler: (event: IpcRendererEvent, ...args: any[]) => void
   ) => void;
+  ping: () => Promise<void>;
 };
