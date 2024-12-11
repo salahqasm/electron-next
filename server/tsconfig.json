@@ -17,8 +17,12 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext",
-    "outDir": "../dist-server"
+    "outDir": "../dist-server",
+    "paths": {
+      "@/*": ["./*"],
+      "@shared/*": ["../shared/*"]
+    }
   },
   "exclude": ["node_modules"],
-  "include": ["**/*.ts", "**/*.tsx", "**/*.js"]
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "../shared"]
 }
