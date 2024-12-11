@@ -4,7 +4,7 @@ import Layout from "@/components/Layout";
 
 const IndexPage = () => {
   useEffect(() => {
-    const handleMessage = (_event, args) => alert(args);
+    const handleMessage = (_event: any, args: any) => alert(args);
 
     // listen to the 'message' channel
     window.electron.receiveHello(handleMessage);
@@ -22,7 +22,7 @@ const IndexPage = () => {
     <Layout title="Home | Next.js + TypeScript + Electron Example">
       <button
         onClick={async () => {
-          let res = await window.electron.ping();
+          const res = await window.electron.getStaticData();
           console.log(res);
         }}
       >

@@ -1,5 +1,12 @@
 import { IpcRendererEvent } from "electron";
 
+export type TResources = {
+  totalStorage: number;
+  cpuName: string;
+  cpuSpeed: number;
+  totalMemory: number;
+};
+
 export type TElectronAPI = {
   sayHello: () => void;
   receiveHello: (
@@ -8,5 +15,5 @@ export type TElectronAPI = {
   stopReceivingHello: (
     handler: (event: IpcRendererEvent, ...args: any[]) => void
   ) => void;
-  ping: () => Promise<void>;
+  getStaticData: () => Promise<TResources>;
 };

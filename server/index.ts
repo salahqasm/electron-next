@@ -6,6 +6,7 @@ import { format } from "url";
 import { BrowserWindow, app, ipcMain, IpcMainEvent } from "electron";
 import isDev from "electron-is-dev";
 import prepareNext from "electron-next";
+import { getStaticData } from "./resourceManager";
 
 // Prepare the renderer once the app is ready
 app.on("ready", async () => {
@@ -41,6 +42,7 @@ ipcMain.on("message", (event: IpcMainEvent, message: any) => {
   console.log(message);
   setTimeout(() => event.sender.send("message", "hi from electron"), 500);
 });
-ipcMain.handle("ping", () => {
-  return "pong";
+
+ipcMain.handle("RESOURCES", () => {
+  return getStaticData();
 });
