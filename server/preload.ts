@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-namespace */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { TElectronAPI } from "../shared/interfaces/electronAPI";
 import { contextBridge, ipcRenderer } from "electron";
 
@@ -9,7 +7,7 @@ import { contextBridge, ipcRenderer } from "electron";
 
 let electronAPI: TElectronAPI = {
   getStaticData: async () => {
-    return await ipcRenderer.invoke("RESOURCES");
+    return await ipcRenderer.invoke("getStaticResources");
   },
   sayHello: () => ipcRenderer.send("message", "hi from next"),
   receiveHello: (handler) => ipcRenderer.on("message", handler),

@@ -1,8 +1,4 @@
-// Native
 import { join } from "path";
-import { format } from "url";
-
-// Packages
 import { BrowserWindow, app, ipcMain, IpcMainEvent } from "electron";
 import isDev from "electron-is-dev";
 import prepareNext from "electron-next";
@@ -24,25 +20,19 @@ app.on("ready", async () => {
 
   const url = isDev
     ? "http://localhost:8000/"
-    : format({
-        pathname: join(__dirname, "../../renderer/out/index.html"),
-        protocol: "file:",
-        slashes: true,
-      });
+    : new URL(join("file:", __dirname, "../../renderer/out/index.html"));
 
-  mainWindow.loadURL(url);
+  mainWindow.loadURL(url.toString());
   mainWindow.webContents.openDevTools();
 });
 
-// Quit the app once all windows are closed
 app.on("window-all-closed", app.quit);
 
-// listen the channel `message` and resend the received message to the renderer process
 ipcMain.on("message", (event: IpcMainEvent, message: any) => {
   console.log(message);
-  setTimeout(() => event.sender.send("message", "hi from electron"), 500);
+  event.sender.send("message", "hi from electron");
 });
 
-ipcMain.handle("RESOURCES", () => {
+ipcMain.handle("getStaticResources", () => {
   return getStaticData();
 });
