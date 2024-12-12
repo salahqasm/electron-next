@@ -10,8 +10,7 @@ export type TResources = {
 
 export type TUsageData = {
   ramUsage: number;
-  cpuUsage: unknown;
-  storageUsage: number;
+  cpuUsage: number;
 };
 
 export type TElectronAPI = {

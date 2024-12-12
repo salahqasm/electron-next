@@ -22,17 +22,15 @@ export default function UsageCharts() {
 
   return (
     <Box width={"full"}>
-      <LineChart
-        title="CPU Usage"
-        data={usageData.map((elem) => elem.cpuUsage) as number[]}
-      />
+      <div>
+        <LineChart
+          title="CPU Usage"
+          data={usageData.map((elem) => elem.cpuUsage)}
+        />
+      </div>
       <LineChart
         title="RAM Usage"
-        data={usageData.map((elem) => elem.ramUsage) as number[]}
-      />
-      <LineChart
-        title="Storage Usage"
-        data={usageData.map((elem) => elem.storageUsage) as number[]}
+        data={usageData.map((elem) => elem.ramUsage)}
       />
     </Box>
   );

@@ -9,7 +9,7 @@ export default function StaticDataRenderer({ data }: { data: TResources }) {
       <Status
         label="CPU"
         value={data.cpuName}
-        meta={data.cpuSpeed.toString() + "GHz"}
+        // meta={data.cpuSpeed.toString() + "GHz"}
       />
       <Status
         label="Storage"

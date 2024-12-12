@@ -7,6 +7,7 @@ export function getStaticData(): TResources {
   const totalStorage = getResources();
   const cpuName = os.cpus()[0].model;
   const cpuSpeed = os.cpus()[0].speed;
+  console.log(os.cpus());
   const totalMemory = Math.round(OsUtils.totalmem() / 1024);
 
   return {
@@ -21,11 +22,9 @@ export function getStaticData(): TResources {
 export async function getUsageData(): Promise<TUsageData> {
   const ramUsage = getRamUsage();
   const cpuUsage = await getCpuUsage();
-  const storageUsage = getResources();
   return {
     ramUsage,
     cpuUsage,
-    storageUsage: storageUsage.usage,
   };
 }
 
@@ -36,7 +35,7 @@ function getRamUsage() {
   return 1 - freeMemoryPercentage;
 }
 
-async function getCpuUsage() {
+async function getCpuUsage(): Promise<number> {
   return new Promise((resolve) => OsUtils.cpuUsage(resolve));
 }
 

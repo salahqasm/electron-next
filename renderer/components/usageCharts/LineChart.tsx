@@ -44,7 +44,6 @@ export default function LineChart({ title, data }: props) {
               label: {
                 show: true,
                 formatter: (value) => {
-                  console.log(parseFloat(value.data.coord[1]).toFixed(2));
                   return (value.data.coord[1] * 100).toFixed(1) + "%";
                 }, // Display the value as percentage
                 position: "top",
