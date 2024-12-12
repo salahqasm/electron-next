@@ -1,45 +1,12 @@
-import { useEffect } from "react";
-import Link from "next/link";
-import Layout from "@/components/Layout";
+import StaticData from "@/components/staticData";
+import UsageCharts from "@/components/usageCharts";
+import { Button, Grid } from "@chakra-ui/react";
 
-const IndexPage = () => {
-  useEffect(() => {
-    const handleMessage = (_event: any, args: any) => alert(args);
-
-    // listen to the 'message' channel
-    window.electron.receiveHello(handleMessage);
-
-    return () => {
-      window.electron.stopReceivingHello(handleMessage);
-    };
-  }, []);
-
-  const onSayHiClick = () => {
-    window.electron.sayHello();
-  };
-
+export default function HomaPage() {
   return (
-    <Layout title="Home | Next.js + TypeScript + Electron Example">
-      <button
-        onClick={async () => {
-          const res = await window.electron.getStaticData();
-          console.log(res);
-        }}
-      >
-        getStatic
-      </button>
-      <button
-        onClick={async () => {
-          const res = await window.electron.getUsageData();
-          console.log(res);
-        }}
-      >
-        getUsage
-      </button>
-      <h1>Hello Next.js 👋</h1>
-      <button onClick={onSayHiClick}>Say hi to electron</button>
-    </Layout>
+    <Grid p={4} gap={2}>
+      <StaticData />
+      <UsageCharts />
+    </Grid>
   );
-};
-
-export default IndexPage;
+}

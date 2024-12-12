@@ -15,9 +15,14 @@
     "type-check": "tsc -p ./renderer/tsconfig.json && tsc -p ./server/tsconfig.json"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.10.4",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "diskusage": "^1.2.0",
+    "echarts-for-react": "^3.0.2",
     "electron-is-dev": "^1.2.0",
     "electron-next": "^3.1.5",
+    "framer-motion": "^11.14.0",
     "os-utils": "^0.0.14",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
