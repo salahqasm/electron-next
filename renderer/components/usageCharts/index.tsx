@@ -30,6 +30,10 @@ export default function UsageCharts() {
         title="RAM Usage"
         data={usageData.map((elem) => elem.ramUsage) as number[]}
       />
+      <LineChart
+        title="Storage Usage"
+        data={usageData.map((elem) => elem.storageUsage) as number[]}
+      />
     </Box>
   );
 }
