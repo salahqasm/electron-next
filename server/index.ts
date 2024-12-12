@@ -2,7 +2,7 @@ import { join } from "path";
 import { BrowserWindow, app, ipcMain, IpcMainEvent } from "electron";
 import isDev from "electron-is-dev";
 import prepareNext from "electron-next";
-import { getStaticData, getUsageData } from "./resourceManager";
+import { getStaticData, getUsageData } from "./utils/resourceManager";
 
 // Prepare the renderer once the app is ready
 app.on("ready", async () => {
@@ -14,7 +14,7 @@ app.on("ready", async () => {
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
-      preload: join(__dirname, "preload.js"),
+      preload: join(__dirname, "preloadScripts/mainWindow.js"),
     },
   });
 

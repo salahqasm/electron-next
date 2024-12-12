@@ -1,7 +1,7 @@
 import OsUtils from "os-utils";
 import os from "os";
 import disk from "diskusage";
-import { TResources, TUsageData } from "../shared/interfaces/electronAPI";
+import { TResources, TUsageData } from "../../shared/interfaces/electronAPI";
 
 export function getStaticData(): TResources {
   const totalStorage = getResources();
