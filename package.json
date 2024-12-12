@@ -40,6 +40,15 @@
   },
   "build": {
     "asar": true,
+    "win": {
+      "icon": "./desktopIcon.png"
+    },
+    "mac": {
+      "icon": "./desktopIcon.png"
+    },
+    "linux": {
+      "icon": "./desktopIcon.png"
+    },
     "files": [
       "dist-server",
       "renderer/out"
