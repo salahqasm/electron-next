@@ -1,29 +1,31 @@
 import OsUtils from "os-utils";
 import os from "os";
 import disk from "diskusage";
-import { TResources } from "../shared/interfaces/electronAPI";
+import { TResources, TUsageData } from "../shared/interfaces/electronAPI";
 
 export function getStaticData(): TResources {
-  const totalStorage = getResources().total;
+  const totalStorage = getResources();
   const cpuName = os.cpus()[0].model;
   const cpuSpeed = os.cpus()[0].speed;
   const totalMemory = Math.round(OsUtils.totalmem());
 
   return {
-    totalStorage,
+    totalStorage: totalStorage.total,
+    freeStorage: totalStorage.free,
     cpuName,
     cpuSpeed,
     totalMemory,
   };
 }
 
-export async function getUsageData() {
+export async function getUsageData(): Promise<TUsageData> {
   const ramUsage = getRamUsage();
   const cpuUsage = await getCpuUsage();
-
+  const storageUsage = getResources();
   return {
     ramUsage,
     cpuUsage,
+    storageUsage: storageUsage.usage,
   };
 }
 

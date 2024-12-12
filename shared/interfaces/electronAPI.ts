@@ -2,9 +2,16 @@ import { IpcRendererEvent } from "electron";
 
 export type TResources = {
   totalStorage: number;
+  freeStorage: number;
   cpuName: string;
   cpuSpeed: number;
   totalMemory: number;
+};
+
+export type TUsageData = {
+  ramUsage: number;
+  cpuUsage: unknown;
+  storageUsage: number;
 };
 
 export type TElectronAPI = {
@@ -16,4 +23,5 @@ export type TElectronAPI = {
     handler: (event: IpcRendererEvent, ...args: any[]) => void
   ) => void;
   getStaticData: () => Promise<TResources>;
+  getUsageData: () => Promise<TUsageData>;
 };

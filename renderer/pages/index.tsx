@@ -26,7 +26,15 @@ const IndexPage = () => {
           console.log(res);
         }}
       >
-        ping
+        getStatic
+      </button>
+      <button
+        onClick={async () => {
+          const res = await window.electron.getUsageData();
+          console.log(res);
+        }}
+      >
+        getUsage
       </button>
       <h1>Hello Next.js 👋</h1>
       <button onClick={onSayHiClick}>Say hi to electron</button>

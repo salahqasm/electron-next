@@ -2,7 +2,7 @@ import { join } from "path";
 import { BrowserWindow, app, ipcMain, IpcMainEvent } from "electron";
 import isDev from "electron-is-dev";
 import prepareNext from "electron-next";
-import { getStaticData } from "./resourceManager";
+import { getStaticData, getUsageData } from "./resourceManager";
 
 // Prepare the renderer once the app is ready
 app.on("ready", async () => {
@@ -35,4 +35,8 @@ ipcMain.on("message", (event: IpcMainEvent, message: any) => {
 
 ipcMain.handle("getStaticResources", () => {
   return getStaticData();
+});
+
+ipcMain.handle("getUsageData", () => {
+  return getUsageData();
 });
